@@ -59,7 +59,7 @@ class View
             AnsiConsole.MarkupLine("[grey]Make sure you selected the packages you wanted to add with <space>[/]");
         }
 
-        return packages.Select(p => p.PackageId);
+        return chosen.Select(p => p.PackageId);
     }
 }
 

@@ -30,8 +30,10 @@ class PackageInstaller
 
         foreach (var package in packageNames)
         {
-            using var proc = Process.Start("dotnet", $"add package {package}");
-            proc.WaitForExit();
+            using var installer = Process.Start("dotnet", $"add package {package} --no-restore");
+            installer.WaitForExit();
         }
+        using var restore = Process.Start("dotnet", "restore");
+        restore.WaitForExit();
     }
 }
